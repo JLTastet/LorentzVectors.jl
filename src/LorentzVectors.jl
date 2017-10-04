@@ -132,4 +132,4 @@ function microbenchmark(N::Integer)
     u
 end
 
-end # module Lorentz
+end # module LorentzVectors
