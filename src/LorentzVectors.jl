@@ -2,10 +2,10 @@ __precompile__()
 
 module LorentzVectors
 
-import Base: +, -, *, /, dot
+import Base: +, -, *, /, dot, norm
 
 export LorentzVector, SpatialVector, Vec4, Vec3
-export +, -, *, /, dot
+export +, -, *, /, dot, norm
 export boost
 
 """
@@ -106,6 +106,13 @@ end
 
 function dot(u::SpatialVector, v::SpatialVector)
     @fastmath u.x*v.x + u.y*v.y + u.z*v.z
+end
+
+"""
+    norm(x)
+"""
+function norm(v::SpatialVector)
+    @fastmath sqrt(v⋅v)
 end
 
 function boost(u::LorentzVector, β::LorentzVector)
