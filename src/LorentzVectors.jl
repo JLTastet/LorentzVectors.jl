@@ -116,16 +116,18 @@ function norm(v::SpatialVector)
 end
 
 function boost(u::LorentzVector, β::LorentzVector)
-    β3 = Vec3(β)
-    γ = 1 / sqrt(1 - β3⋅β3)
-    x3 = Vec3(u)
-    t = γ * (u.t - β3⋅x3)
-    x = x3 + ((γ-1) * (x3⋅β3) / (β3⋅β3) - γ*u.t) * β3
-    Vec4(t, x.x, x.y, x.z)
+    boost(u, SpatialVector(β))
 end
 
 function boost(u::LorentzVector, β::SpatialVector)
-    boost(u, LorentzVector(one(typeof(β.x)), β.x, β.y, β.z))
+    const γ = one(β.x) / sqrt(one(β.x) - β⋅β)
+    if γ == one(γ)
+        return u
+    end
+    const x_old = Vec3(u)
+    const t_new = γ * (u.t - β⋅x_old)
+    const x_new = x_old + ((γ-one(γ)) * (x_old⋅β) / (β⋅β) - γ*u.t) * β
+    LorentzVector(t_new, x_new.x, x_new.y, x_new.z)
 end
 
 function microbenchmark(N::Integer)
