@@ -2,10 +2,10 @@ __precompile__()
 
 module LorentzVectors
 
-import Base: +, -, *, /, dot, norm
+import Base: +, -, *, /, dot, norm, rand
 
 export LorentzVector, SpatialVector, Vec4, Vec3
-export +, -, *, /, dot, norm
+export +, -, *, /, dot, norm, rand
 export boost
 
 """
@@ -120,6 +120,16 @@ end
 """
 function norm(v::SpatialVector)
     @fastmath sqrt(v⋅v)
+end
+
+"""
+    rand(rng, SpatialVector)
+"""
+function rand(r::MersenneTwister, ::Type{V}) where {U <: Real, V <: SpatialVector{U}}
+    cθ = 2.*rand(r, U) - 1.
+    sθ = sqrt(1.-cθ^2)
+    φ = 2π * rand(r, U)
+    SpatialVector{U}(sθ * cos(φ), sθ * sin(φ), cθ)
 end
 
 function boost(u::LorentzVector, β::LorentzVector)
