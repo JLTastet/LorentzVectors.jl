@@ -40,6 +40,13 @@ Construct a 3-vector from the spatial part of a 4-vector.
 """
 SpatialVector(u::LorentzVector) = SpatialVector(u.x, u.y, u.z)
 
+"""
+    LorentzVector(t, u)
+
+Construct a 4-vector from a time component and a 3-vector.
+"""
+LorentzVector{T}(t::T, u::SpatialVector{T}) = LorentzVector(t, u.x, u.y, u.z)
+
 "Alias of LorentzVector"
 const Vec4 = LorentzVector
 
