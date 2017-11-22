@@ -53,6 +53,10 @@ const Vec4 = LorentzVector
 "Alias of SpatialVector"
 const Vec3 = SpatialVector
 
+function +(u::LorentzVector)
+    u
+end
+
 function +(u::LorentzVector, v::LorentzVector)
     @fastmath LorentzVector(u.t + v.t, u.x + v.x, u.y + v.y, u.z + v.z)
 end
@@ -75,6 +79,10 @@ end
 
 function /(u::LorentzVector, λ::Number)
     @fastmath u * (one(λ) / λ)
+end
+
+function +(u::SpatialVector)
+    u
 end
 
 function +(u::SpatialVector, v::SpatialVector)
