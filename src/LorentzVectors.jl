@@ -15,7 +15,7 @@ Contravariant Lorentz 4-vector, as used in Special Relativity.
 
 The metric convention is g = diag(+1,-1,-1,-1).
 """
-struct LorentzVector{T}
+struct LorentzVector{T <: AbstractFloat}
     t :: T
     x :: T
     y :: T
@@ -27,11 +27,29 @@ end
 
 Spatial part of a Lorentz 4-vector.
 """
-struct SpatialVector{T}
+struct SpatialVector{T <: AbstractFloat}
     x :: T
     y :: T
     z :: T
 end
+
+"""
+    LorentzVector(t, x, y, z)
+
+Promoting constructors for LorentzVector{T}.
+"""
+LorentzVector(t, x, y, z) = LorentzVector(promote(t, x, y, z)...)
+LorentzVector(t::Integer, x::Integer, y::Integer, z::Integer) =
+    LorentzVector(float(t), x, y, z)
+
+"""
+    SpatialVector(x, y, z)
+
+Promoting constructors for SpatialVector{T}.
+"""
+SpatialVector(x, y, z) = SpatialVector(promote(x, y, z)...)
+SpatialVector(x::Integer, y::Integer, z::Integer) =
+    SpatialVector(float(x), y, z)
 
 """
     SpatialVector(u)
@@ -45,7 +63,8 @@ SpatialVector(u::LorentzVector) = SpatialVector(u.x, u.y, u.z)
 
 Construct a 4-vector from a time component and a 3-vector.
 """
-LorentzVector{T}(t::T, u::SpatialVector{T}) = LorentzVector(t, u.x, u.y, u.z)
+LorentzVector(t::T, u::SpatialVector{U}) where {T,U} =
+    LorentzVector(t, u.x, u.y, u.z)
 
 "Alias of LorentzVector"
 const Vec4 = LorentzVector
