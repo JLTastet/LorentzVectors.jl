@@ -2,10 +2,10 @@ __precompile__()
 
 module LorentzVectors
 
-import Base: +, -, *, /, dot, norm, rand
+import Base: +, -, *, /, ==, ≈, dot, norm, rand
 
 export LorentzVector, SpatialVector, Vec4, Vec3
-export +, -, *, /, dot, norm, rand
+export +, -, *, /, ==, ≈, dot, norm, rand
 export boost
 
 """
@@ -127,6 +127,22 @@ end
 
 function /(u::SpatialVector, λ::Number)
     @fastmath u * (one(λ) / λ)
+end
+
+function ==(u::LorentzVector, v::LorentzVector)
+    u.t == v.t && u.x == v.x && u.y == v.y && u.z == v.z
+end
+
+function ==(u::SpatialVector, v::SpatialVector)
+    u.x == v.x && u.y == v.y && u.z == v.z
+end
+
+function ≈(u::LorentzVector, v::LorentzVector)
+    u.t ≈ v.t && u.x ≈ v.x && u.y ≈ v.y && u.z ≈ v.z
+end
+
+function ≈(u::SpatialVector, v::SpatialVector)
+    u.x ≈ v.x && u.y ≈ v.y && u.z ≈ v.z
 end
 
 """
