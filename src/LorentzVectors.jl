@@ -170,8 +170,8 @@ end
     rand(rng, SpatialVector)
 """
 function rand(r::MersenneTwister, ::Type{V}) where {U <: Real, V <: SpatialVector{U}}
-    cθ = 2.*rand(r, U) - 1.
-    sθ = sqrt(1.-cθ^2)
+    cθ = 2*rand(r, U) - 1
+    sθ = sqrt(1-cθ^2)
     φ = 2π * rand(r, U)
     SpatialVector{U}(sθ * cos(φ), sθ * sin(φ), cθ)
 end
