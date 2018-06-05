@@ -1,4 +1,8 @@
-using Base.Test
+using Compat
+using Compat.Test
+using Compat.LinearAlgebra
+using Compat.Random
+
 using LorentzVectors
 
 srand(8372946187652352328)

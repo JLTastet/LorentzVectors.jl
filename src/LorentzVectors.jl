@@ -2,7 +2,11 @@ __precompile__()
 
 module LorentzVectors
 
-import Base: +, -, *, /, ==, ≈, dot, norm, rand
+using Compat
+import Compat.LinearAlgebra: dot, ⋅, norm
+import Compat.Random: rand, MersenneTwister
+
+import Base: +, -, *, /, ==, ≈
 
 export LorentzVector, SpatialVector, Vec4, Vec3
 export +, -, *, /, ==, ≈, dot, norm, rand
