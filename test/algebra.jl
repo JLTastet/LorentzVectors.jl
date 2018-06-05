@@ -1,8 +1,8 @@
 @testset "Algebra" begin
     @testset "LorentzVector" begin
-        const zero = Vec4(0., 0., 0., 0.)
-        const u1 = Vec4(1., 2., 3., 4.)
-        const u2 = Vec4(-1., 3., 3., 7.)
+        zero = Vec4(0., 0., 0., 0.)
+        u1 = Vec4(1., 2., 3., 4.)
+        u2 = Vec4(-1., 3., 3., 7.)
         @test -zero == zero
         @test +u1 == u1
         @test +u2 == u2
@@ -27,9 +27,9 @@
     end;
 
     @testset "SpatialVector" begin
-        const zero = Vec3(0., 0., 0.)
-        const u1 = Vec3(1., 2., 4.)
-        const u2 = Vec3(-1., 3., 7.)
+        zero = Vec3(0., 0., 0.)
+        u1 = Vec3(1., 2., 4.)
+        u2 = Vec3(-1., 3., 7.)
         @test -zero == zero
         @test +u1 == u1
         @test +u2 == u2

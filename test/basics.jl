@@ -23,9 +23,9 @@
     end;
 
     @testset "Misc. constructors" begin
-        const x = Vec3(1, 2, 3)
+        x = Vec3(1, 2, 3)
         @test Vec4(0.5, x) == Vec4(0.5, 1., 2., 3.)
-        const u = Vec4(0, 1, 2, 3)
+        u = Vec4(0, 1, 2, 3)
         @test Vec3(u) == Vec3(1., 2., 3.)
     end;
 end;

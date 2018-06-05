@@ -181,13 +181,13 @@ function boost(u::LorentzVector, β::LorentzVector)
 end
 
 function boost(u::LorentzVector, β::SpatialVector)
-    const γ = one(β.x) / sqrt(one(β.x) - β⋅β)
+    γ = one(β.x) / sqrt(one(β.x) - β⋅β)
     if γ == one(γ)
         return u
     end
-    const x_old = Vec3(u)
-    const t_new = γ * (u.t - β⋅x_old)
-    const x_new = x_old + ((γ-one(γ)) * (x_old⋅β) / (β⋅β) - γ*u.t) * β
+    x_old = Vec3(u)
+    t_new = γ * (u.t - β⋅x_old)
+    x_new = x_old + ((γ-one(γ)) * (x_old⋅β) / (β⋅β) - γ*u.t) * β
     LorentzVector(t_new, x_new.x, x_new.y, x_new.z)
 end
 
