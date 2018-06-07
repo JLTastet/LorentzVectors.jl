@@ -52,5 +52,15 @@
         @test u2 ⋅ u2 ≈ 59.
         @test u1 ⋅ u2 ≈ 33.
 
+        @test norm(zero) == 0.
+        @test norm(u1) ≈ 4.58257569495584
+        @test norm(u2) ≈ 7.681145747868608
+        @test norm(Vec3(1, 1, 0)) ≈ √2
+        @test norm(Vec3(1, 1, 1)) ≈ √3
+        @test norm(Vec3(2, 1, 2)) ≈ 3
+
+        @test normalize(Vec3(1, 1, 0)) ≈ Vec3(1/√2, 1/√2, 0)
+        @test normalize(Vec3(1, 1, 1)) ≈ Vec3(1/√3, 1/√3, 1/√3)
+        @test normalize(Vec3(2, 2, 1)) ≈ Vec3(2/3, 2/3, 1/3)
     end;
 end;

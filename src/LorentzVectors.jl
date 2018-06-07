@@ -3,13 +3,13 @@ __precompile__()
 module LorentzVectors
 
 using Compat
-import Compat.LinearAlgebra: dot, ⋅, norm
+import Compat.LinearAlgebra: dot, ⋅, norm, normalize
 import Compat.Random: rand, MersenneTwister
 
 import Base: +, -, *, /, ==, ≈
 
 export LorentzVector, SpatialVector, Vec4, Vec3
-export +, -, *, /, ==, ≈, dot, norm, rand
+export +, -, *, /, ==, ≈, dot, norm, normalize, rand
 export boost
 
 """
@@ -168,6 +168,13 @@ end
 """
 function norm(v::SpatialVector)
     @fastmath sqrt(v⋅v)
+end
+
+"""
+    normalize(x)
+"""
+function normalize(v::SpatialVector)
+    v / norm(v)
 end
 
 """
