@@ -9,6 +9,8 @@
         @test typeof(Vec4(0, 1, 2f0, 3)) == LorentzVector{Float32}
         @test typeof(Vec4(0, 1, 2, 3f0)) == LorentzVector{Float32}
         @test typeof(Vec4(0f0, 1., 2f0, 3f0)) == LorentzVector{Float64}
+        @test Vec4(0//1, 1, 2, 3) == Vec4(0., 1., 2., 3.)
+        @test Vec4(π, π, π, π) ≈ Vec4(float(π), float(π), float(π), float(π))
     end;
 
     @testset "SpatialVector" begin
@@ -20,6 +22,8 @@
         @test typeof(Vec3(0, 1f0, 2)) == SpatialVector{Float32}
         @test typeof(Vec3(0, 1, 2f0)) == SpatialVector{Float32}
         @test typeof(Vec3(0f0, 1., 2f0)) == SpatialVector{Float64}
+        @test Vec3(0//1, 1, 2) == Vec3(0., 1., 2.)
+        @test Vec3(π, π, π) ≈ Vec3(float(π), float(π), float(π))
     end;
 
     @testset "Misc. constructors" begin

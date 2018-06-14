@@ -44,7 +44,7 @@ end
 Promoting constructors for LorentzVector{T}.
 """
 LorentzVector(t, x, y, z) = LorentzVector(promote(t, x, y, z)...)
-LorentzVector(t::Integer, x::Integer, y::Integer, z::Integer) =
+LorentzVector(t::T, x::T, y::T, z::T) where {T <: Union{Integer, Rational, Irrational}} =
     LorentzVector(float(t), x, y, z)
 
 """
@@ -53,7 +53,7 @@ LorentzVector(t::Integer, x::Integer, y::Integer, z::Integer) =
 Promoting constructors for SpatialVector{T}.
 """
 SpatialVector(x, y, z) = SpatialVector(promote(x, y, z)...)
-SpatialVector(x::Integer, y::Integer, z::Integer) =
+SpatialVector(x::T, y::T, z::T) where {T <: Union{Integer, Rational, Irrational}} =
     SpatialVector(float(x), y, z)
 
 """
