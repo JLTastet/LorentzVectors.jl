@@ -15,3 +15,5 @@ notifications:
 script:
   - julia -e 'Pkg.clone(pwd())'
   - julia -e 'Pkg.test("LorentzVectors",coverage=true)'
+after_success:
+  - julia -e 'cd(Pkg.dir("LorentzVectors")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
