@@ -202,15 +202,4 @@ function boost(u::LorentzVector, β::SpatialVector)
     LorentzVector(t_new, x_new.x, x_new.y, x_new.z)
 end
 
-function microbenchmark(N::Integer)
-    u = LorentzVector(1., 0., 0., 1.)
-    β = SpatialVector(0.01, 0., 0.)
-    s = +1
-    for i = 1:N
-        s *= -1
-        u = boost(u, s * β)
-    end
-    u
-end
-
 end # module LorentzVectors
