@@ -11,4 +11,5 @@ srand(8372946187652352328)
     include("basics.jl")
     include("algebra.jl")
     include("random.jl")
+    include("geometry.jl")
 end;
