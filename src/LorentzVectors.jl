@@ -9,7 +9,7 @@ import Compat.Random: rand, MersenneTwister
 import Base: +, -, *, /, ==, ≈
 
 export LorentzVector, SpatialVector, Vec4, Vec3
-export +, -, *, /, ==, ≈, dot, norm, normalize, rand
+export +, -, *, /, ==, ≈, dot, ⋅, norm, normalize, rand
 export boost
 
 """
