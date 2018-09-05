@@ -5,16 +5,11 @@ os:
   - osx
 julia:
   - nightly
-  - 0.7
-  - 0.6
-  - 0.6.2
+  - 1.0
 matrix:
   allow_failures:
     - julia: nightly
 notifications:
   email: false
-script:
-  - julia -e 'Pkg.clone(pwd())'
-  - julia -e 'Pkg.test("LorentzVectors",coverage=true)'
 after_success:
-  - julia -e 'cd(Pkg.dir("LorentzVectors")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
+  - julia -e 'using Pkg; cd(Pkg.dir("LorentzVectors")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
