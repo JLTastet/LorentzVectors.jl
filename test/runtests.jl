@@ -1,11 +1,8 @@
-using Compat
-using Compat.Test
-using Compat.LinearAlgebra
-using Compat.Random
-
 using LorentzVectors
+using Test
+using Random
 
-srand(8372946187652352328)
+Random.seed!(8372946187652352328)
 
 @testset "All tests" begin
     include("basics.jl")
