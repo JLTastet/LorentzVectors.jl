@@ -6,10 +6,10 @@ using Compat
 import Compat.LinearAlgebra: dot, ⋅, norm, normalize
 import Compat.Random: rand, MersenneTwister
 
-import Base: +, -, *, /, ==, ≈
+import Base: +, -, *, /, ==, ≈, zero
 
 export LorentzVector, SpatialVector, Vec4, Vec3
-export +, -, *, /, ==, ≈, dot, ⋅, norm, normalize, rand
+export +, -, *, /, ==, ≈, dot, ⋅, norm, normalize, rand, zero
 export boost
 
 """
@@ -70,6 +70,24 @@ Construct a 4-vector from a time component and a 3-vector.
 """
 LorentzVector(t::T, u::SpatialVector{U}) where {T,U} =
     LorentzVector(t, u.x, u.y, u.z)
+
+"""
+    zero(LorentzVector{T})
+    zero(LorentzVector)
+
+Constructs a zero four-vector.
+"""
+zero(::Type{LorentzVector{T}}) where {T} = LorentzVector{T}(zero(T), zero(T), zero(T), zero(T))
+zero(::Type{LorentzVector}) = zero(LorentzVector{Float64})
+
+"""
+    zero(SpatialVector{T})
+    zero(SpatialVector)
+
+Constructs a zero three-vector.
+"""
+zero(::Type{SpatialVector{T}}) where {T} = SpatialVector{T}(zero(T), zero(T), zero(T))
+zero(::Type{SpatialVector}) = zero(SpatialVector{Float64})
 
 "Alias of LorentzVector"
 const Vec4 = LorentzVector

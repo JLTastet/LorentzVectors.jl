@@ -32,4 +32,21 @@
         u = Vec4(0, 1, 2, 3)
         @test Vec3(u) == Vec3(1., 2., 3.)
     end;
+
+    @testset "Zero constructor" begin
+        x = zero(Vec3)
+        @test x === Vec3(0.0, 0.0, 0.0)
+        x64 = zero(Vec3{Float64})
+        @test x === x64
+        x32 = zero(Vec3{Float32})
+        @test x32 === Vec3{Float32}(0f0, 0f0, 0f0)
+        y = zero(Vec4)
+        @test y === Vec4(0.0, 0.0, 0.0, 0.0)
+        y64 = zero(Vec4{Float64})
+        @test y === y64
+        y32 = zero(Vec4{Float32})
+        @test y32 === Vec4(0f0, 0f0, 0f0, 0f0)
+        @test zeros(Vec3, 2) == [x, x]
+        @test zeros(Vec4, 2) == [y, y]
+    end
 end;
