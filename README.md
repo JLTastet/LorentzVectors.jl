@@ -13,10 +13,10 @@ The signature of the Minkowski metric (used for the inner product) is `+,-,-,-`.
 :arrow_down: Installing
 ---
 
-From the Julia REPL:
+This package is now registered. To install it, just issue the following command from the Julia REPL:
 
 ```
-(v1.0) pkg> add https://github.com/Element-126/LorentzVectors.jl.git
+(v1.0) pkg> add LorentzVectors
 ```
 
 :information_source: Usage
