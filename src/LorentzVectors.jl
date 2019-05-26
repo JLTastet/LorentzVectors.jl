@@ -8,8 +8,8 @@ import Random: rand, MersenneTwister
 import Base: +, -, *, /, ==, isapprox, ≈, zero
 
 export LorentzVector, SpatialVector, Vec4, Vec3
-export boost
 export +, -, *, /, ==, isapprox, ≈, dot, ⋅, cross, ×, norm, normalize, rand, zero
+export boost, rotate
 
 """
     LorentzVector(t, x, y, z)
@@ -233,6 +233,17 @@ function boost(u::LorentzVector, β::SpatialVector)
     t_new = γ * (u.t - β⋅x_old)
     x_new = x_old + ((γ-one(γ)) * (x_old⋅β) / (β⋅β) - γ*u.t) * β
     LorentzVector(t_new, x_new.x, x_new.y, x_new.z)
+end
+
+"""
+Rotate a vector v by an angle θ around the unit vector k̂, using Rodrigues' rotation formula.
+
+Note: k̂ *must* be normalized, otherwise this method will return the wrong result.
+
+Source: https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
+"""
+function rotate(v::SpatialVector, k̂::SpatialVector, θ::Real)
+    v*cos(θ) + (k̂×v)*sin(θ) + k̂*(k̂⋅v)*(1-cos(θ))
 end
 
 end # module LorentzVectors
