@@ -2,13 +2,13 @@ __precompile__()
 
 module LorentzVectors
 
-import LinearAlgebra: dot, ⋅, norm, normalize
+import LinearAlgebra: dot, ⋅, cross, ×, norm, normalize
 import Random: rand, MersenneTwister
 
 import Base: +, -, *, /, ==, ≈, zero
 
 export LorentzVector, SpatialVector, Vec4, Vec3
-export +, -, *, /, ==, ≈, dot, ⋅, norm, normalize, rand, zero
+export +, -, *, /, ==, ≈, dot, ⋅, cross, ×, norm, normalize, rand, zero
 export boost
 
 """
@@ -178,6 +178,19 @@ end
 
 function dot(u::SpatialVector, v::SpatialVector)
     @fastmath u.x*v.x + u.y*v.y + u.z*v.z
+end
+
+"""
+    cross(u, v)
+    u×v
+
+Cross product of two spatial vectors.
+"""
+function cross(u::SpatialVector, v::SpatialVector)
+    @fastmath SpatialVector(
+        u.y*v.z - u.z*v.y,
+        u.z*v.x - u.x*v.z,
+        u.x*v.y - u.y*v.x)
 end
 
 """

@@ -52,6 +52,15 @@
         @test u2 ⋅ u2 ≈ 59.
         @test u1 ⋅ u2 ≈ 33.
 
+        @test Vec3(0, 1, 0) × Vec3(0, 0, 1) == Vec3(1, 0, 0)
+        @test Vec3(0, 0, 1) × Vec3(1, 0, 0) == Vec3(0, 1, 0)
+        @test Vec3(1, 0, 0) × Vec3(0, 1, 0) == Vec3(0, 0, 1)
+        @test u1 × u1 == zero
+        @test u2 × u2 == zero
+        @test (u1 × u2) ⋅ u1 == 0
+        @test (u1 × u2) ⋅ u2 == 0
+        @test u1 × u2 == Vec3(2., -11., 5.)
+
         @test norm(zero) == 0.
         @test norm(u1) ≈ 4.58257569495584
         @test norm(u2) ≈ 7.681145747868608
