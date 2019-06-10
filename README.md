@@ -1,7 +1,7 @@
 # LorentzVectors.jl
 
-[![Build Status](https://travis-ci.org/Element-126/LorentzVectors.jl.svg?branch=master)](https://travis-ci.org/Element-126/LorentzVectors.jl)
-[![codecov.io](http://codecov.io/github/Element-126/LorentzVectors.jl/coverage.svg?branch=master)](http://codecov.io/github/Element-126/LorentzVectors.jl?branch=master)
+[![Build Status](https://travis-ci.org/JLTastet/LorentzVectors.jl.svg?branch=master)](https://travis-ci.org/JLTastet/LorentzVectors.jl)
+[![codecov.io](http://codecov.io/github/JLTastet/LorentzVectors.jl/coverage.svg?branch=master)](http://codecov.io/github/JLTastet/LorentzVectors.jl?branch=master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
 This package defines the `LorentzVector{T}` and `SpatialVector{T}` types for use in computations involving Special Relativity. These types are statically allocated and should therefore be very fast.
