@@ -24,6 +24,9 @@
         @test u1 ⋅ u1 ≈ -28.
         @test u2 ⋅ u2 ≈ -66.
         @test u1 ⋅ u2 ≈ -44.
+
+        @test Vec4(1, 0, 0, 1/3) - Vec4(1, 0, 0, 1/5) - Vec4(1, 0, 0, 2/15) ≈ Vec4(-1., 0, 0, 0)
+        @test Vec4(1/3, 0, 0, 1) - Vec4(1/5, 0, 0, 1) - Vec4(2/15, 0, 0, 1) ≈ Vec4(0, 0, 0, -1.)
     end;
 
     @testset "SpatialVector" begin

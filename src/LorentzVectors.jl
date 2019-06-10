@@ -158,8 +158,11 @@ function ==(u::SpatialVector, v::SpatialVector)
     u.x == v.x && u.y == v.y && u.z == v.z
 end
 
-function isapprox(u::LorentzVector, v::LorentzVector; kwargs...)
-    isapprox(u.t, v.t; kwargs...) && isapprox(Vec3(u), Vec3(v); kwargs...)
+function isapprox(u::LorentzVector, v::LorentzVector;
+                  atol::Real=0,
+                  rtol::Real=atol>0 ? 0 : √min(eps(typeof(u.x)), eps(typeof(v.x))))
+    err = max(abs(u.t - v.t), norm(Vec3(u)-Vec3(v)))
+    err <= max(atol, rtol*max(abs(u.t), abs(v.t), norm(Vec3(u)), norm(Vec3(v))))
 end
 
 function isapprox(u::SpatialVector, v::SpatialVector;
