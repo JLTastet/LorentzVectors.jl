@@ -7,7 +7,7 @@ import Random: rand, AbstractRNG
 
 import Base: +, -, *, /, ==, isapprox, ≈, zero
 
-export LorentzVector, SpatialVector, Vec4, Vec3
+export LorentzVector, SpatialVector, Vec4, Vec3, CVec4, CVec3
 export dot, ⋅, cross, ×, norm, normalize
 export boost, rotate
 
@@ -93,6 +93,14 @@ const Vec4 = LorentzVector
 
 "Alias of SpatialVector"
 const Vec3 = SpatialVector
+
+"Alias of LorentzVector{Complex}"
+const CVec4{T} = LorentzVector{Complex{T}}
+CVec4(args...) = Vec4(complex.(args)...)
+
+"Alias of SpatialVector{Complex}"
+const CVec3{T} = SpatialVector{Complex{T}}
+CVec3(args...) = Vec3(complex.(args)...)
 
 function +(u::LorentzVector)
     u
