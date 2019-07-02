@@ -49,4 +49,23 @@
         @test zeros(Vec3, 2) == [x, x]
         @test zeros(Vec4, 2) == [y, y]
     end
+
+    @testset "Complex" begin
+        p4 = Vec4(1.0, 0.0, 0.0, 1.0)
+        z4 = CVec4(1.0im, 0.0, 0.0, 1.0im)
+        @test typeof(p4) == LorentzVector{Float64}
+        @test typeof(z4) == LorentzVector{Complex{Float64}}
+        @test 1im * p4 == z4
+        p3 = Vec3(0.0, 0.0, 1.0)
+        z3 = CVec3(0.0, 0.0, 1.0im)
+        @test typeof(p3) == SpatialVector{Float64}
+        @test typeof(z3) == SpatialVector{Complex{Float64}}
+        @test 1im * p3 == z3
+        z4f = CVec4(1.0f0im, 0.0f0, 0.0f0, 1.0f0im)
+        @test typeof(z4f) == LorentzVector{Complex{Float32}}
+        @test z4f == z4
+        z3f = CVec3(0.0f0, 0.0f0, 1.0f0im)
+        @test typeof(z3f) == SpatialVector{Complex{Float32}}
+        @test z3f == z3
+    end
 end;

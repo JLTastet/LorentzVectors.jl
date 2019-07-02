@@ -7,7 +7,7 @@ import Random: rand, MersenneTwister
 
 import Base: +, -, *, /, ==, isapprox, ≈, zero
 
-export LorentzVector, SpatialVector, Vec4, Vec3
+export LorentzVector, SpatialVector, Vec4, Vec3, CVec4, CVec3
 export +, -, *, /, ==, isapprox, ≈, dot, ⋅, cross, ×, norm, normalize, rand, zero
 export boost, rotate
 
@@ -19,7 +19,7 @@ Lorentz 4-vector, as used in Special Relativity.
 The metric convention is g = diag(+1,-1,-1,-1). No distinction is made between
 co- and contravariant vectors.
 """
-struct LorentzVector{T <: AbstractFloat}
+struct LorentzVector{T <: Number}
     t :: T
     x :: T
     y :: T
@@ -31,7 +31,7 @@ end
 
 Spatial part of a Lorentz 4-vector.
 """
-struct SpatialVector{T <: AbstractFloat}
+struct SpatialVector{T <: Number}
     x :: T
     y :: T
     z :: T
@@ -93,6 +93,14 @@ const Vec4 = LorentzVector
 
 "Alias of SpatialVector"
 const Vec3 = SpatialVector
+
+"Alias of LorentzVector{Complex}"
+const CVec4{T} = LorentzVector{Complex{T}}
+CVec4(args...) = Vec4(complex.(args)...)
+
+"Alias of SpatialVector{Complex}"
+const CVec3{T} = SpatialVector{Complex{T}}
+CVec3(args...) = Vec3(complex.(args)...)
 
 function +(u::LorentzVector)
     u
