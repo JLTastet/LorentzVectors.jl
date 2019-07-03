@@ -75,4 +75,15 @@
         @test normalize(Vec3(1, 1, 1)) ≈ Vec3(1/√3, 1/√3, 1/√3)
         @test normalize(Vec3(2, 2, 1)) ≈ Vec3(2/3, 2/3, 1/3)
     end;
+
+    @testset "Complex" begin
+        u1 = Vec4(2.0, -0.5, 1.0, 0.0)
+        @test u1' == u1
+        u2 = Vec3(0.5, 1.0, -0.5)
+        @test u2' == u2
+        z1 = CVec4(2.0, 1.0im, 0.0, -1.0-0.5im)
+        @test z1' == CVec4(2.0, -1.0im, 0.0, -1.0+0.5im)
+        z2 = CVec3(1.0im, -0.5+0.5im, -0.7)
+        @test z2' == CVec3(-1.0im, -0.5-0.5im, -0.7)
+    end;
 end;

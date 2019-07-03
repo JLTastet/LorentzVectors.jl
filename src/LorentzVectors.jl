@@ -5,10 +5,10 @@ module LorentzVectors
 import LinearAlgebra: dot, ⋅, cross, ×, norm, normalize
 import Random: rand, AbstractRNG
 
-import Base: +, -, *, /, ==, isapprox, ≈, zero
+import Base: +, -, *, /, ==, isapprox, ≈, zero, adjoint
 
 export LorentzVector, SpatialVector, Vec4, Vec3, CVec4, CVec3
-export dot, ⋅, cross, ×, norm, normalize
+export dot, ⋅, cross, ×, norm, normalize, adjoint
 export boost, rotate
 
 """
@@ -179,6 +179,12 @@ function isapprox(u::SpatialVector, v::SpatialVector;
     err = norm(u-v)
     err <= max(atol, rtol*max(norm(u), norm(v)))
 end
+
+adjoint(u::LorentzVector{T}) where {T <: Real} = u
+adjoint(u::SpatialVector{T}) where {T <: Real} = u
+
+adjoint(u::CVec4{T}) where {T <: Real} = CVec4{T}(u.t', u.x', u.y', u.z')
+adjoint(u::CVec3{T}) where {T <: Real} = CVec3{T}(u.x', u.y', u.z')
 
 """
     dot(u, v)
