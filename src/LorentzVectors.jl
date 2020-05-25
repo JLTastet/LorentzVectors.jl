@@ -19,7 +19,7 @@ Lorentz 4-vector, as used in Special Relativity.
 The metric convention is g = diag(+1,-1,-1,-1). No distinction is made between
 co- and contravariant vectors.
 """
-struct LorentzVector{T <: AbstractFloat}
+struct LorentzVector{T}
     t :: T
     x :: T
     y :: T
@@ -31,7 +31,7 @@ end
 
 Spatial part of a Lorentz 4-vector.
 """
-struct SpatialVector{T <: AbstractFloat}
+struct SpatialVector{T}
     x :: T
     y :: T
     z :: T
@@ -110,11 +110,11 @@ function -(u::LorentzVector, v::LorentzVector)
     @fastmath u + (-v)
 end
 
-function *(λ::Number, u::LorentzVector)
+function *(λ::T, u::LorentzVector{T}) where {T}
     @fastmath LorentzVector(λ*u.t, λ*u.x, λ*u.y, λ*u.z)
 end
 
-function *(u::LorentzVector, λ::Number)
+function *(u::LorentzVector{T}, λ::T) where {T}
     @fastmath λ * u
 end
 
