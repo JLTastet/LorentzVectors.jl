@@ -118,15 +118,15 @@ function -(u::LorentzVector, v::LorentzVector)
     @fastmath u + (-v)
 end
 
-function *(λ::T, u::LorentzVector{T}) where {T}
+function *(λ, u::LorentzVector)
     @fastmath LorentzVector(λ*u.t, λ*u.x, λ*u.y, λ*u.z)
 end
 
-function *(u::LorentzVector{T}, λ::T) where {T}
+function *(u::LorentzVector, λ)
     @fastmath λ * u
 end
 
-function /(u::LorentzVector, λ::Number)
+function /(u::LorentzVector, λ)
     @fastmath u * (one(λ) / λ)
 end
 
@@ -146,15 +146,15 @@ function -(u::SpatialVector, v::SpatialVector)
     @fastmath u + (-v)
 end
 
-function *(λ::Number, u::SpatialVector)
+function *(λ, u::SpatialVector)
     @fastmath SpatialVector(λ*u.x, λ*u.y, λ*u.z)
 end
 
-function *(u::SpatialVector, λ::Number)
+function *(u::SpatialVector, λ)
     @fastmath λ * u
 end
 
-function /(u::SpatialVector, λ::Number)
+function /(u::SpatialVector, λ)
     @fastmath u * (one(λ) / λ)
 end
 
