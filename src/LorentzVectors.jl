@@ -3,7 +3,7 @@ __precompile__()
 module LorentzVectors
 
 import LinearAlgebra: dot, ⋅, cross, ×, norm, normalize
-import Random: rand, MersenneTwister
+import Random: rand, AbstractRNG
 
 import Base: +, -, *, /, ==, isapprox, ≈, zero
 
@@ -216,7 +216,7 @@ end
 """
     rand(rng, SpatialVector)
 """
-function rand(r::MersenneTwister, ::Type{V}) where {U <: Real, V <: SpatialVector{U}}
+function rand(r::AbstractRNG, ::Type{V}) where {U <: Real, V <: SpatialVector{U}}
     cθ = 2*rand(r, U) - 1
     sθ = sqrt(1-cθ^2)
     φ = 2π * rand(r, U)
