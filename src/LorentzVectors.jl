@@ -8,7 +8,7 @@ import Random: rand, AbstractRNG
 import Base: +, -, *, /, ==, isapprox, ≈, zero
 
 export LorentzVector, SpatialVector, Vec4, Vec3
-export +, -, *, /, ==, isapprox, ≈, dot, ⋅, cross, ×, norm, normalize, rand, zero
+export ⋅, cross, ×, norm, normalize
 export boost, rotate
 
 """
