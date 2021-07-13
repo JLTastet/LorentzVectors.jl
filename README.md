@@ -1,6 +1,6 @@
 # LorentzVectors.jl
 
-[![Build Status](https://travis-ci.org/JLTastet/LorentzVectors.jl.svg?branch=master)](https://travis-ci.org/JLTastet/LorentzVectors.jl)
+<!---[![Build Status](https://travis-ci.org/JLTastet/LorentzVectors.jl.svg?branch=master)](https://travis-ci.org/JLTastet/LorentzVectors.jl)-->
 [![codecov.io](http://codecov.io/github/JLTastet/LorentzVectors.jl/coverage.svg?branch=master)](http://codecov.io/github/JLTastet/LorentzVectors.jl?branch=master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 
