@@ -1,7 +1,7 @@
 name = "LorentzVectors"
 uuid = "3f54b04b-17fc-5cd4-9758-90c048d965e3"
-authors = ["Jean-Loup Tastet <jean-loup.tastet@cern.ch>"]
-version = "0.4.2"
+authors = ["Jean-Loup Tastet <jean-loup.tastet@uam.es>"]
+version = "0.4.3"
 
 [deps]
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"

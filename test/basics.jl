@@ -26,6 +26,17 @@
         @test Vec3(π, π, π) ≈ Vec3(float(π), float(π), float(π))
     end;
 
+    @testset "Conversions" begin
+        x = Vec3(1., 2., 3.)
+        x′ = convert(Vec3{Float32}, x)
+        @test x′ == Vec3(1f0, 2f0, 3f0)
+        @test typeof(x′) == Vec3{Float32}
+        u = Vec4(0., 1., 2., 3.)
+        u′ = convert(Vec4{Float32}, u)
+        @test u′ == Vec4(0f0, 1f0, 2f0, 3f0)
+        @test typeof(u′) == Vec4{Float32}
+    end
+
     @testset "Misc. constructors" begin
         x = Vec3(1, 2, 3)
         @test Vec4(0.5, x) == Vec4(0.5, 1., 2., 3.)

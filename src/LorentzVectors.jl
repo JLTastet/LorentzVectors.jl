@@ -5,11 +5,12 @@ module LorentzVectors
 import LinearAlgebra: dot, ⋅, cross, ×, norm, normalize
 import Random: rand, AbstractRNG
 
-import Base: +, -, *, /, ==, isapprox, ≈, zero
+import Base: +, -, *, /, ==, isapprox, ≈, zero, convert
 
 export LorentzVector, SpatialVector, Vec4, Vec3
 export dot, ⋅, cross, ×, norm, normalize
 export boost, rotate
+export convert
 
 """
     LorentzVector(t, x, y, z)
@@ -69,6 +70,21 @@ Construct a 4-vector from a time component and a 3-vector.
 """
 LorentzVector(t::T, u::SpatialVector{U}) where {T,U} =
     LorentzVector(t, u.x, u.y, u.z)
+
+"""
+    convert(LorentzVector{T}, u)
+
+Converts between LorentzVector types of different precisions.
+"""
+convert(::Type{LorentzVector{T}}, u::LorentzVector) where {T <: AbstractFloat} = LorentzVector{T}(u.t, u.x, u.y, u.z)
+
+
+"""
+    convert(SpatialVector{T}, u)
+
+Converts between SpatialVector types of different precisions.
+"""
+convert(::Type{SpatialVector{T}}, u::SpatialVector) where {T <: AbstractFloat} = SpatialVector{T}(u.x, u.y, u.z)
 
 """
     zero(LorentzVector{T})
