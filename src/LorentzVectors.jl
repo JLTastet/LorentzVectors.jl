@@ -26,6 +26,10 @@ struct LorentzVector{T <: AbstractFloat}
     y :: T
     z :: T
 end
+function Base.show(io::IO, ::MIME"text/plain", lv::LorentzVector{T}) where T
+    print(io, "LV{$T}(x=$(lv.x), y=$(lv.y), z=$(lv.z), t=$(lv.t))")
+end
+
 
 """
     SpatialVector(x, y, z)
