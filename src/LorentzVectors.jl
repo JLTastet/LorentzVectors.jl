@@ -27,7 +27,7 @@ struct LorentzVector{T <: AbstractFloat}
     z :: T
 end
 function Base.show(io::IO, ::MIME"text/plain", lv::LorentzVector{T}) where T
-    print(io, "LV{$T}(x=$(lv.x), y=$(lv.y), z=$(lv.z), t=$(lv.t))")
+    print(io, "Vec4{$T}(x=$(lv.x), y=$(lv.y), z=$(lv.z), t=$(lv.t))")
 end
 
 
